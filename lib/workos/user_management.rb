@@ -306,6 +306,8 @@ module WorkOS
       # @param [String] ip_address The IP address of the request from the user who is attempting to authenticate.
       # @param [String] user_agent The user agent of the request from the user who is attempting to authenticate.
       # @param [Hash] session An optional hash that determines whether the session should be sealed and
+      # @param [String] invitation_token The token of an invitation. The invitation should be in the pending state.
+
       # the optional cookie password.
       #
       # @return WorkOS::AuthenticationResponse
@@ -314,7 +316,8 @@ module WorkOS
         client_id:,
         ip_address: nil,
         user_agent: nil,
-        session: nil
+        session: nil,
+        invitation_token: nil
       )
         if session && (session[:seal_session] == true) && session[:cookie_password].nil?
           raise ArgumentError, 'cookie_password is required when sealing session'
@@ -330,6 +333,7 @@ module WorkOS
               ip_address: ip_address,
               user_agent: user_agent,
               grant_type: 'authorization_code',
+              invitation_token: invitation_token,
             },
           ),
         )

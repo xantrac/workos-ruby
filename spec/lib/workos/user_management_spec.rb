@@ -415,6 +415,7 @@ describe WorkOS::UserManagement do
             client_id: 'client_123',
             ip_address: '200.240.210.16',
             user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Chrome/108.0.0.0 Safari/537.36',
+            invitation_token: 'invitation_token_1234',
           )
           expect(authentication_response.user.id).to eq('user_01H93ZY4F80YZRRS6N59Z2HFVS')
           expect(authentication_response.access_token).to eq('<ACCESS_TOKEN>')
